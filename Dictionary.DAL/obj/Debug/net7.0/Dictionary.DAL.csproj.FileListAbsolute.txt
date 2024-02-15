@@ -1,0 +1,17 @@
+D:\Projects\Backend\ITslang\Dictionary.DAL\bin\Debug\net7.0\Dictionary.DAL.deps.json
+D:\Projects\Backend\ITslang\Dictionary.DAL\bin\Debug\net7.0\Dictionary.DAL.runtimeconfig.json
+D:\Projects\Backend\ITslang\Dictionary.DAL\bin\Debug\net7.0\Dictionary.DAL.dll
+D:\Projects\Backend\ITslang\Dictionary.DAL\bin\Debug\net7.0\Dictionary.DAL.pdb
+D:\Projects\Backend\ITslang\Dictionary.DAL\bin\Debug\net7.0\Dictionary.Data.dll
+D:\Projects\Backend\ITslang\Dictionary.DAL\bin\Debug\net7.0\Dictionary.Data.pdb
+D:\Projects\Backend\ITslang\Dictionary.DAL\obj\Debug\net7.0\Dictionary.DAL.csproj.AssemblyReference.cache
+D:\Projects\Backend\ITslang\Dictionary.DAL\obj\Debug\net7.0\Dictionary.DAL.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\Backend\ITslang\Dictionary.DAL\obj\Debug\net7.0\Dictionary.DAL.AssemblyInfoInputs.cache
+D:\Projects\Backend\ITslang\Dictionary.DAL\obj\Debug\net7.0\Dictionary.DAL.AssemblyInfo.cs
+D:\Projects\Backend\ITslang\Dictionary.DAL\obj\Debug\net7.0\Dictionary.DAL.csproj.CoreCompileInputs.cache
+D:\Projects\Backend\ITslang\Dictionary.DAL\obj\Debug\net7.0\Dictiona.1ADE6EF4.Up2Date
+D:\Projects\Backend\ITslang\Dictionary.DAL\obj\Debug\net7.0\Dictionary.DAL.dll
+D:\Projects\Backend\ITslang\Dictionary.DAL\obj\Debug\net7.0\refint\Dictionary.DAL.dll
+D:\Projects\Backend\ITslang\Dictionary.DAL\obj\Debug\net7.0\Dictionary.DAL.pdb
+D:\Projects\Backend\ITslang\Dictionary.DAL\obj\Debug\net7.0\Dictionary.DAL.genruntimeconfig.cache
+D:\Projects\Backend\ITslang\Dictionary.DAL\obj\Debug\net7.0\ref\Dictionary.DAL.dll

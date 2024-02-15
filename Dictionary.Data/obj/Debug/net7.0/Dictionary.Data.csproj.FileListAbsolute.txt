@@ -1,0 +1,11 @@
+D:\Projects\Backend\ITslang\Dictionary.Data\bin\Debug\net7.0\Dictionary.Data.deps.json
+D:\Projects\Backend\ITslang\Dictionary.Data\bin\Debug\net7.0\Dictionary.Data.dll
+D:\Projects\Backend\ITslang\Dictionary.Data\bin\Debug\net7.0\Dictionary.Data.pdb
+D:\Projects\Backend\ITslang\Dictionary.Data\obj\Debug\net7.0\Dictionary.Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\Backend\ITslang\Dictionary.Data\obj\Debug\net7.0\Dictionary.Data.AssemblyInfoInputs.cache
+D:\Projects\Backend\ITslang\Dictionary.Data\obj\Debug\net7.0\Dictionary.Data.AssemblyInfo.cs
+D:\Projects\Backend\ITslang\Dictionary.Data\obj\Debug\net7.0\Dictionary.Data.csproj.CoreCompileInputs.cache
+D:\Projects\Backend\ITslang\Dictionary.Data\obj\Debug\net7.0\Dictionary.Data.dll
+D:\Projects\Backend\ITslang\Dictionary.Data\obj\Debug\net7.0\refint\Dictionary.Data.dll
+D:\Projects\Backend\ITslang\Dictionary.Data\obj\Debug\net7.0\Dictionary.Data.pdb
+D:\Projects\Backend\ITslang\Dictionary.Data\obj\Debug\net7.0\ref\Dictionary.Data.dll
