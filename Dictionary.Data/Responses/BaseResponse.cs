@@ -23,5 +23,5 @@ public class BaseResponse<T> : IBaseResponse<T>
     /// <summary>
     /// Received data from DAL
     /// </summary>
-    public required T Data { get; set; }
+    public T Data { get; set; }
 }

@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <TargetFramework>net7.0</TargetFramework>
@@ -8,16 +8,15 @@
 
     <ItemGroup>
       <Compile Remove="Class1.cs" />
-      <Compile Remove="Dtos\BaseDto.cs" />
-      <Compile Remove="Dtos\**" />
     </ItemGroup>
 
     <ItemGroup>
-      <EmbeddedResource Remove="Dtos\**" />
+      <ProjectReference Include="..\Dictionary.DAL\Dictionary.DAL.csproj" />
+      <ProjectReference Include="..\Dictionary.Data\Dictionary.Data.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <None Remove="Dtos\**" />
+      <PackageReference Include="AutoMapper" Version="13.0.1" />
     </ItemGroup>
 
 </Project>

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Projects\\Backend\\ITslang\\Dictionary.API\\Dictionary.API.csproj": {}
+    "D:\\Projects\\Backend\\ITslang\\Dictionary.BLL\\Dictionary.BLL.csproj": {}
   },
   "projects": {
-    "D:\\Projects\\Backend\\ITslang\\Dictionary.API\\Dictionary.API.csproj": {
+    "D:\\Projects\\Backend\\ITslang\\Dictionary.BLL\\Dictionary.BLL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\Backend\\ITslang\\Dictionary.API\\Dictionary.API.csproj",
-        "projectName": "Dictionary.API",
-        "projectPath": "D:\\Projects\\Backend\\ITslang\\Dictionary.API\\Dictionary.API.csproj",
+        "projectUniqueName": "D:\\Projects\\Backend\\ITslang\\Dictionary.BLL\\Dictionary.BLL.csproj",
+        "projectName": "Dictionary.BLL",
+        "projectPath": "D:\\Projects\\Backend\\ITslang\\Dictionary.BLL\\Dictionary.BLL.csproj",
         "packagesPath": "C:\\Users\\boguc\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\Backend\\ITslang\\Dictionary.API\\obj\\",
+        "outputPath": "D:\\Projects\\Backend\\ITslang\\Dictionary.BLL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\boguc\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -30,6 +30,9 @@
             "projectReferences": {
               "D:\\Projects\\Backend\\ITslang\\Dictionary.DAL\\Dictionary.DAL.csproj": {
                 "projectPath": "D:\\Projects\\Backend\\ITslang\\Dictionary.DAL\\Dictionary.DAL.csproj"
+              },
+              "D:\\Projects\\Backend\\ITslang\\Dictionary.Data\\Dictionary.Data.csproj": {
+                "projectPath": "D:\\Projects\\Backend\\ITslang\\Dictionary.Data\\Dictionary.Data.csproj"
               }
             }
           }
@@ -44,29 +47,9 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
-            "Microsoft.AspNetCore.OpenApi": {
+            "AutoMapper": {
               "target": "Package",
-              "version": "[7.0.16, )"
-            },
-            "Microsoft.EntityFrameworkCore.Design": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[7.0.16, )"
-            },
-            "Microsoft.EntityFrameworkCore.Sqlite": {
-              "target": "Package",
-              "version": "[7.0.16, )"
-            },
-            "Microsoft.EntityFrameworkCore.Tools": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[7.0.16, )"
-            },
-            "Swashbuckle.AspNetCore": {
-              "target": "Package",
-              "version": "[6.5.0, )"
+              "version": "[13.0.1, )"
             }
           },
           "imports": [
@@ -81,9 +64,6 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
