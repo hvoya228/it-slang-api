@@ -13,6 +13,10 @@ public class TermConfiguration : IEntityTypeConfiguration<Term>
         builder
             .Property(m => m.Text)
             .IsRequired();
+
+        builder
+            .Property(m => m.Explanation)
+            .IsRequired();
         
         builder
             .HasOne(m => m.Category)

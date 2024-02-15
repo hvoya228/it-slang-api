@@ -9,3 +9,4 @@ D:\Projects\Backend\ITslang\Dictionary.Data\obj\Debug\net7.0\Dictionary.Data.dll
 D:\Projects\Backend\ITslang\Dictionary.Data\obj\Debug\net7.0\refint\Dictionary.Data.dll
 D:\Projects\Backend\ITslang\Dictionary.Data\obj\Debug\net7.0\Dictionary.Data.pdb
 D:\Projects\Backend\ITslang\Dictionary.Data\obj\Debug\net7.0\ref\Dictionary.Data.dll
+D:\Projects\Backend\ITslang\Dictionary.Data\obj\Debug\net7.0\Dictionary.Data.sourcelink.json

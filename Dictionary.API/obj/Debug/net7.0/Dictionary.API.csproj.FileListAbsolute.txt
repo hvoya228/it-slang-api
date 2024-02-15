@@ -71,3 +71,4 @@ D:\Projects\Backend\ITslang\Dictionary.API\obj\Debug\net7.0\refint\Dictionary.AP
 D:\Projects\Backend\ITslang\Dictionary.API\obj\Debug\net7.0\Dictionary.API.pdb
 D:\Projects\Backend\ITslang\Dictionary.API\obj\Debug\net7.0\Dictionary.API.genruntimeconfig.cache
 D:\Projects\Backend\ITslang\Dictionary.API\obj\Debug\net7.0\ref\Dictionary.API.dll
+D:\Projects\Backend\ITslang\Dictionary.API\obj\Debug\net7.0\Dictionary.API.sourcelink.json
