@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v7.0": {
       "Dictionary.API/1.0.0": {
         "dependencies": {
+          "Dictionary.BLL": "1.0.0",
           "Dictionary.DAL": "1.0.0",
           "Microsoft.AspNetCore.OpenApi": "7.0.16",
           "Microsoft.EntityFrameworkCore.Design": "7.0.16",
@@ -17,6 +18,17 @@
         },
         "runtime": {
           "Dictionary.API.dll": {}
+        }
+      },
+      "AutoMapper/13.0.1": {
+        "dependencies": {
+          "Microsoft.Extensions.Options": "7.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/AutoMapper.dll": {
+            "assemblyVersion": "13.0.0.0",
+            "fileVersion": "13.0.1.0"
+          }
         }
       },
       "Humanizer.Core/2.14.1": {
@@ -402,6 +414,16 @@
           "System.Text.Encodings.Web": "7.0.0"
         }
       },
+      "Dictionary.BLL/1.0.0": {
+        "dependencies": {
+          "AutoMapper": "13.0.1",
+          "Dictionary.DAL": "1.0.0",
+          "Dictionary.Data": "1.0.0"
+        },
+        "runtime": {
+          "Dictionary.BLL.dll": {}
+        }
+      },
       "Dictionary.DAL/1.0.0": {
         "dependencies": {
           "Dictionary.Data": "1.0.0",
@@ -424,6 +446,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "AutoMapper/13.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/Fx1SbJ16qS7dU4i604Sle+U9VLX+WSNVJggk6MupKVkYvvBm4XqYaeFuf67diHefHKHs50uQIS2YEDFhPCakQ==",
+      "path": "automapper/13.0.1",
+      "hashPath": "automapper.13.0.1.nupkg.sha512"
     },
     "Humanizer.Core/2.14.1": {
       "type": "package",
@@ -676,6 +705,11 @@
       "sha512": "sha512-DaGSsVqKsn/ia6RG8frjwmJonfos0srquhw09TlT8KRw5I43E+4gs+/bZj4K0vShJ5H9imCuXupb4RmS+dBy3w==",
       "path": "system.text.json/7.0.0",
       "hashPath": "system.text.json.7.0.0.nupkg.sha512"
+    },
+    "Dictionary.BLL/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "Dictionary.DAL/1.0.0": {
       "type": "project",

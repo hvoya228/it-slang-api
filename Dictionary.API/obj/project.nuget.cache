@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "EIm3bxvS+aRPOPFwGH51xEO6AK93zB+z9JCrWULEch9Ha9u9Izec6pcrxmUJF7FDqaB1O+hd1+HGuqc7BOGqxw==",
+  "dgSpecHash": "Y1IBe3DjD4Q2jUAuL5G9vDCCrQFUpdr0q5ULJUNgPD8mzm0TVG2kjB4CF6pogWSnPkBniCBD9NWJoMfQ6MHKiw==",
   "success": true,
   "projectFilePath": "D:\\Projects\\Backend\\ITslang\\Dictionary.API\\Dictionary.API.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\boguc\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\boguc\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\boguc\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.16\\microsoft.aspnetcore.openapi.7.0.16.nupkg.sha512",
     "C:\\Users\\boguc\\.nuget\\packages\\microsoft.data.sqlite.core\\7.0.16\\microsoft.data.sqlite.core.7.0.16.nupkg.sha512",

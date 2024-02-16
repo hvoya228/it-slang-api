@@ -25,41 +25,27 @@ public class TermService : ITermService
         throw new NotImplementedException();
     }
 
-    public async Task<IBaseResponse<IEnumerable<TermDto>>> GetAll()
+    public async Task<IBaseResponse<IEnumerable<TermDto>>> Get()
     {
-        var baseResponse = new BaseResponse<IEnumerable<TermDto>>();
-        var dtoList = new List<TermDto>();
-
         try
         {
             var models = await _unitOfWork.TermRepository.GetAsync();
 
+            if (models.Count is 0)
+            {
+                return CreateBaseResponse<IEnumerable<TermDto>>("0 objects found", StatusCode.NotFound);
+            }
+
+            var dtoList = new List<TermDto>();
+                
             foreach (var model in models)
-            {
-                var dto = _mapper.Map<TermDto>(model);
-                dtoList.Add(dto);
-            }
-
-            if (dtoList.Count is 0)
-            {
-                baseResponse.Description = "0 objects found";
-                baseResponse.StatusCode = StatusCode.NotFound;
-                return baseResponse;
-            }
-
-            baseResponse.ResultsCount = dtoList.Count;
-            baseResponse.Description = "Success!";
-            baseResponse.Data = dtoList;
-            baseResponse.StatusCode = StatusCode.Ok;
-
-            return baseResponse;
+                dtoList.Add(_mapper.Map<TermDto>(model));
+                
+            return CreateBaseResponse<IEnumerable<TermDto>>("Success!", StatusCode.Ok, dtoList, dtoList.Count);
         }
         catch(Exception e) 
         {
-            return new BaseResponse<IEnumerable<TermDto>>()
-            {
-                Description = $"{e.Message}"
-            };
+            return CreateBaseResponse<IEnumerable<TermDto>>(e.Message, StatusCode.InternalServerError);
         }
     }
 
@@ -70,32 +56,20 @@ public class TermService : ITermService
             if (modelDto is not null)
             {
                 modelDto.Id = Guid.NewGuid();
-                var model = _mapper.Map<Term>(modelDto);
-                await _unitOfWork.TermRepository.InsertAsync(model);
+                
+                await _unitOfWork.TermRepository.InsertAsync(_mapper.Map<Term>(modelDto));
                 await _unitOfWork.SaveChangesAsync();
 
-                return new BaseResponse<string>()
-                {
-                    Description = $"Object inserted!"
-                };
+                return CreateBaseResponse<string>("Object inserted!", StatusCode.Ok, resultsCount: 1);
             }
-            else
-            {
-                return new BaseResponse<string>()
-                {
-                    Description = $"Objet can`t be empty..."
-                };
-            }
+
+            return CreateBaseResponse<string>("Objet can`t be empty...", StatusCode.BadRequest);
         }
-        catch(Exception e)
+        catch (Exception e)
         {
-            return new BaseResponse<string>()
-            {
-                Description = $"{e.Message}"
-            };
+            return CreateBaseResponse<string>(e.Message, StatusCode.InternalServerError);
         }
     }
-        
 
     public async Task<IBaseResponse<string>> DeleteById(Guid id)
     {
@@ -104,17 +78,22 @@ public class TermService : ITermService
             await _unitOfWork.TermRepository.DeleteAsync(id);
             await _unitOfWork.SaveChangesAsync();
 
-            return new BaseResponse<string>()
-            {
-                Description = $"Object deleted!"
-            };
+            return CreateBaseResponse<string>("Object deleted!", StatusCode.Ok, resultsCount: 1);
         }
         catch (Exception e)
         {
-            return new BaseResponse<string>()
-            {
-                Description = $"{e.Message}"
-            };
+            return CreateBaseResponse<string>($"{e.Message} or object not found", StatusCode.InternalServerError);
         }
+    }
+    
+    private BaseResponse<T> CreateBaseResponse<T>(string description, StatusCode statusCode, T? data = default, int resultsCount = 0)
+    {
+        return new BaseResponse<T>()
+        {
+            ResultsCount = resultsCount,
+            Data = data!,
+            Description = description,
+            StatusCode = statusCode
+        };
     }
 }

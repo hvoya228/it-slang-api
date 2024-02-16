@@ -26,10 +26,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Controllers\" />
-    </ItemGroup>
-
-    <ItemGroup>
+      <ProjectReference Include="..\Dictionary.BLL\Dictionary.BLL.csproj" />
       <ProjectReference Include="..\Dictionary.DAL\Dictionary.DAL.csproj" />
     </ItemGroup>
 

@@ -25,41 +25,27 @@ public class CategoryService : ICategoryService
         throw new NotImplementedException();
     }
 
-    public async Task<IBaseResponse<IEnumerable<CategoryDto>>> GetAll()
+    public async Task<IBaseResponse<IEnumerable<CategoryDto>>> Get()
     {
-        var baseResponse = new BaseResponse<IEnumerable<CategoryDto>>();
-        var dtoList = new List<CategoryDto>();
-
         try
         {
             var models = await _unitOfWork.CategoryRepository.GetAsync();
 
+            if (models.Count is 0)
+            {
+                return CreateBaseResponse<IEnumerable<CategoryDto>>("0 objects found", StatusCode.NotFound);
+            }
+
+            var dtoList = new List<CategoryDto>();
+                
             foreach (var model in models)
-            {
-                var dto = _mapper.Map<CategoryDto>(model);
-                dtoList.Add(dto);
-            }
-
-            if (dtoList.Count is 0)
-            {
-                baseResponse.Description = "0 objects found";
-                baseResponse.StatusCode = StatusCode.NotFound;
-                return baseResponse;
-            }
-
-            baseResponse.ResultsCount = dtoList.Count;
-            baseResponse.Description = "Success!";
-            baseResponse.Data = dtoList;
-            baseResponse.StatusCode = StatusCode.Ok;
-
-            return baseResponse;
+                dtoList.Add(_mapper.Map<CategoryDto>(model));
+                
+            return CreateBaseResponse<IEnumerable<CategoryDto>>("Success!", StatusCode.Ok, dtoList, dtoList.Count);
         }
         catch(Exception e) 
         {
-            return new BaseResponse<IEnumerable<CategoryDto>>()
-            {
-                Description = $"{e.Message}"
-            };
+            return CreateBaseResponse<IEnumerable<CategoryDto>>(e.Message, StatusCode.InternalServerError);
         }
     }
 
@@ -70,29 +56,18 @@ public class CategoryService : ICategoryService
             if (modelDto is not null)
             {
                 modelDto.Id = Guid.NewGuid();
-                var model = _mapper.Map<Category>(modelDto);
-                await _unitOfWork.CategoryRepository.InsertAsync(model);
+                
+                await _unitOfWork.CategoryRepository.InsertAsync(_mapper.Map<Category>(modelDto));
                 await _unitOfWork.SaveChangesAsync();
 
-                return new BaseResponse<string>()
-                {
-                    Description = $"Object inserted!"
-                };
+                return CreateBaseResponse<string>("Object inserted!", StatusCode.Ok, resultsCount: 1);
             }
-            else
-            {
-                return new BaseResponse<string>()
-                {
-                    Description = $"Objet can`t be empty..."
-                };
-            }
+
+            return CreateBaseResponse<string>("Objet can`t be empty...", StatusCode.BadRequest);
         }
         catch (Exception e)
         {
-            return new BaseResponse<string>()
-            {
-                Description = $"{e.Message}"
-            };
+            return CreateBaseResponse<string>(e.Message, StatusCode.InternalServerError);
         }
     }
 
@@ -103,17 +78,22 @@ public class CategoryService : ICategoryService
             await _unitOfWork.CategoryRepository.DeleteAsync(id);
             await _unitOfWork.SaveChangesAsync();
 
-            return new BaseResponse<string>()
-            {
-                Description = $"Object deleted!"
-            };
+            return CreateBaseResponse<string>("Object deleted!", StatusCode.Ok, resultsCount: 1);
         }
         catch (Exception e)
         {
-            return new BaseResponse<string>()
-            {
-                Description = $"{e.Message}"
-            };
+            return CreateBaseResponse<string>($"{e.Message} or object not found", StatusCode.InternalServerError);
         }
+    }
+    
+    private BaseResponse<T> CreateBaseResponse<T>(string description, StatusCode statusCode, T? data = default, int resultsCount = 0)
+    {
+            return new BaseResponse<T>()
+            {
+                ResultsCount = resultsCount,
+                Data = data!,
+                Description = description,
+                StatusCode = statusCode
+            };
     }
 }

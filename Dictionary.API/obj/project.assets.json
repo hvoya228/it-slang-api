@@ -2,6 +2,22 @@
   "version": 3,
   "targets": {
     "net7.0": {
+      "AutoMapper/13.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Options": "6.0.0"
+        },
+        "compile": {
+          "lib/net6.0/AutoMapper.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/AutoMapper.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Humanizer.Core/2.14.1": {
         "type": "package",
         "compile": {
@@ -670,6 +686,21 @@
           "buildTransitive/net6.0/System.Text.Json.targets": {}
         }
       },
+      "Dictionary.BLL/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "AutoMapper": "13.0.1",
+          "Dictionary.DAL": "1.0.0",
+          "Dictionary.Data": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Dictionary.BLL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Dictionary.BLL.dll": {}
+        }
+      },
       "Dictionary.DAL/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
@@ -698,6 +729,21 @@
     }
   },
   "libraries": {
+    "AutoMapper/13.0.1": {
+      "sha512": "/Fx1SbJ16qS7dU4i604Sle+U9VLX+WSNVJggk6MupKVkYvvBm4XqYaeFuf67diHefHKHs50uQIS2YEDFhPCakQ==",
+      "type": "package",
+      "path": "automapper/13.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "automapper.13.0.1.nupkg.sha512",
+        "automapper.nuspec",
+        "icon.png",
+        "lib/net6.0/AutoMapper.dll",
+        "lib/net6.0/AutoMapper.xml"
+      ]
+    },
     "Humanizer.Core/2.14.1": {
       "sha512": "lQKvtaTDOXnoVJ20ibTuSIOf2i0uO0MPbDhd1jm238I+U/2ZnRENj0cktKZhtchBMtCUSRQ5v4xBCUbKNmyVMw==",
       "type": "package",
@@ -1775,6 +1821,11 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "Dictionary.BLL/1.0.0": {
+      "type": "project",
+      "path": "../Dictionary.BLL/Dictionary.BLL.csproj",
+      "msbuildProject": "../Dictionary.BLL/Dictionary.BLL.csproj"
+    },
     "Dictionary.DAL/1.0.0": {
       "type": "project",
       "path": "../Dictionary.DAL/Dictionary.DAL.csproj",
@@ -1788,6 +1839,7 @@
   },
   "projectFileDependencyGroups": {
     "net7.0": [
+      "Dictionary.BLL >= 1.0.0",
       "Dictionary.DAL >= 1.0.0",
       "Microsoft.AspNetCore.OpenApi >= 7.0.16",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.16",
@@ -1823,6 +1875,9 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
+            "D:\\Projects\\Backend\\ITslang\\Dictionary.BLL\\Dictionary.BLL.csproj": {
+              "projectPath": "D:\\Projects\\Backend\\ITslang\\Dictionary.BLL\\Dictionary.BLL.csproj"
+            },
             "D:\\Projects\\Backend\\ITslang\\Dictionary.DAL\\Dictionary.DAL.csproj": {
               "projectPath": "D:\\Projects\\Backend\\ITslang\\Dictionary.DAL\\Dictionary.DAL.csproj"
             }

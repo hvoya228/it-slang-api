@@ -1,4 +1,9 @@
+using Dictionary.BLL;
+using Dictionary.BLL.Interfaces;
+using Dictionary.BLL.Services;
 using Dictionary.DAL;
+using Dictionary.DAL.Interfaces;
+using Dictionary.DAL.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +16,18 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DictionaryContext>(options =>
     options.UseSqlite("Data Source=DictionaryDatabase.db")
 );
+
+builder.Services.AddAutoMapper(typeof(MappingProfile));
+
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<ITermRepository, TermRepository>();
+builder.Services.AddScoped<IUseFrequencyRepository, UseFrequencyRepository>();
+
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<ITermService, TermService>();
+builder.Services.AddScoped<IUseFrequencyService, UseFrequencyService>();
 
 var app = builder.Build();
 
