@@ -20,11 +20,6 @@ public class UseFrequencyService : IUseFrequencyService
         _mapper = mapper;
     }
 
-    public Task<IBaseResponse<UseFrequencyDto>> GetById(Guid id)
-    {
-        throw new NotImplementedException();
-    }
-
     public async Task<IBaseResponse<IEnumerable<UseFrequencyDto>>> Get()
     {
         try

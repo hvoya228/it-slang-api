@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Dictionary.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+91c140fe9f20fecb64543d06dfadf36304910e44")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0ff40b5efd280a4b60c8ed503e0a848e06b050ed")]
 [assembly: System.Reflection.AssemblyProductAttribute("Dictionary.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Dictionary.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

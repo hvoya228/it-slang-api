@@ -10,6 +10,7 @@
       <Compile Remove="Class1.cs" />
       <Compile Remove="Dtos\BaseDto.cs" />
       <Compile Remove="Dtos\**" />
+      <Compile Remove="DataTransferObjects\DictionaryObjectDto.cs" />
     </ItemGroup>
 
     <ItemGroup>

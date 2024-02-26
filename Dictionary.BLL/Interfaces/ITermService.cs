@@ -5,8 +5,9 @@ namespace Dictionary.BLL.Interfaces;
 
 public interface ITermService
 {
-    Task<IBaseResponse<TermDto>> GetById(Guid id);
-    Task<IBaseResponse<IEnumerable<TermDto>>> Get();
-    Task<IBaseResponse<string>> Insert(TermDto modelDto);
+    Task<IBaseResponse<IEnumerable<CompleteTermDto>>> GetByText(string text);
+    Task<IBaseResponse<IEnumerable<CompleteTermDto>>> GetByCategoryId(Guid categoryId);
+    Task<IBaseResponse<IEnumerable<CompleteTermDto>>> Get();
+    Task<IBaseResponse<string>> Insert(TermDto model);
     Task<IBaseResponse<string>> DeleteById(Guid id);
 }

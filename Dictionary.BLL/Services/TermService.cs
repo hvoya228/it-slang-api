@@ -20,12 +20,73 @@ public class TermService : ITermService
         _mapper = mapper;
     }
 
-    public Task<IBaseResponse<TermDto>> GetById(Guid id)
+    public async Task<IBaseResponse<IEnumerable<CompleteTermDto>>> GetByText(string text)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var models = await _unitOfWork.TermRepository.GetByTextAsync(text);
+
+            if (models.Count is 0)
+            {
+                return CreateBaseResponse<IEnumerable<CompleteTermDto>>("0 objects found", StatusCode.NotFound);
+            }
+
+            var dtoList = new List<CompleteTermDto>();
+                
+            foreach (var model in models)
+            {
+                var dto = _mapper.Map<CompleteTermDto>(model);
+                var category = await _unitOfWork.CategoryRepository.GetByIdAsync(model.CategoryId);
+                var useFrequency = await _unitOfWork.UseFrequencyRepository.GetByIdAsync(model.UseFrequencyId);
+                dto.Category = category.Text;
+                dto.CategoryId = category.Id;
+                dto.UseFrequency = useFrequency.Frequency;
+                dto.UseFrequencyId = useFrequency.Id;
+                dtoList.Add(dto);
+            }
+                
+            return CreateBaseResponse<IEnumerable<CompleteTermDto>>("Success!", StatusCode.Ok, dtoList, dtoList.Count);
+        }
+        catch(Exception e)
+        {
+            return CreateBaseResponse<IEnumerable<CompleteTermDto>>(e.Message, StatusCode.InternalServerError);
+        }
     }
 
-    public async Task<IBaseResponse<IEnumerable<TermDto>>> Get()
+    public async Task<IBaseResponse<IEnumerable<CompleteTermDto>>> GetByCategoryId(Guid categoryId)
+    {
+        try
+        {
+            var models = await _unitOfWork.TermRepository.GetByCategoryIdAsync(categoryId);
+
+            if (models.Count is 0)
+            {
+                return CreateBaseResponse<IEnumerable<CompleteTermDto>>("0 objects found", StatusCode.NotFound);
+            }
+
+            var dtoList = new List<CompleteTermDto>();
+                
+            foreach (var model in models)
+            {
+                var dto = _mapper.Map<CompleteTermDto>(model);
+                var category = await _unitOfWork.CategoryRepository.GetByIdAsync(model.CategoryId);
+                var useFrequency = await _unitOfWork.UseFrequencyRepository.GetByIdAsync(model.UseFrequencyId);
+                dto.Category = category.Text;
+                dto.CategoryId = category.Id;
+                dto.UseFrequency = useFrequency.Frequency;
+                dto.UseFrequencyId = useFrequency.Id;
+                dtoList.Add(dto);
+            }
+                
+            return CreateBaseResponse<IEnumerable<CompleteTermDto>>("Success!", StatusCode.Ok, dtoList, dtoList.Count);
+        }
+        catch(Exception e)
+        {
+            return CreateBaseResponse<IEnumerable<CompleteTermDto>>(e.Message, StatusCode.InternalServerError);
+        }
+    }
+    
+    public async Task<IBaseResponse<IEnumerable<CompleteTermDto>>> Get()
     {
         try
         {
@@ -33,19 +94,28 @@ public class TermService : ITermService
 
             if (models.Count is 0)
             {
-                return CreateBaseResponse<IEnumerable<TermDto>>("0 objects found", StatusCode.NotFound);
+                return CreateBaseResponse<IEnumerable<CompleteTermDto>>("0 objects found", StatusCode.NotFound);
             }
 
-            var dtoList = new List<TermDto>();
-                
+            var dtoList = new List<CompleteTermDto>();
+
             foreach (var model in models)
-                dtoList.Add(_mapper.Map<TermDto>(model));
-                
-            return CreateBaseResponse<IEnumerable<TermDto>>("Success!", StatusCode.Ok, dtoList, dtoList.Count);
+            {
+                var dto = _mapper.Map<CompleteTermDto>(model);
+                var category = await _unitOfWork.CategoryRepository.GetByIdAsync(model.CategoryId);
+                var useFrequency = await _unitOfWork.UseFrequencyRepository.GetByIdAsync(model.UseFrequencyId);
+                dto.Category = category.Text;
+                dto.CategoryId = category.Id;
+                dto.UseFrequency = useFrequency.Frequency;
+                dto.UseFrequencyId = useFrequency.Id;
+                dtoList.Add(dto);
+            }
+
+            return CreateBaseResponse<IEnumerable<CompleteTermDto>>("Success!", StatusCode.Ok, dtoList, dtoList.Count);
         }
         catch(Exception e) 
         {
-            return CreateBaseResponse<IEnumerable<TermDto>>(e.Message, StatusCode.InternalServerError);
+            return CreateBaseResponse<IEnumerable<CompleteTermDto>>(e.Message, StatusCode.InternalServerError);
         }
     }
 
@@ -53,17 +123,15 @@ public class TermService : ITermService
     {
         try
         {
-            if (modelDto is not null)
-            {
-                modelDto.Id = Guid.NewGuid();
-                
-                await _unitOfWork.TermRepository.InsertAsync(_mapper.Map<Term>(modelDto));
-                await _unitOfWork.SaveChangesAsync();
+            if (modelDto is null) 
+                return CreateBaseResponse<string>("Objet can`t be empty...", StatusCode.BadRequest);
+            
+            modelDto.Id = Guid.NewGuid();
+            await _unitOfWork.TermRepository.InsertAsync(_mapper.Map<Term>(modelDto));
+            await _unitOfWork.SaveChangesAsync();
 
-                return CreateBaseResponse<string>("Object inserted!", StatusCode.Ok, resultsCount: 1);
-            }
+            return CreateBaseResponse<string>("Object inserted!", StatusCode.Ok, resultsCount: 1);
 
-            return CreateBaseResponse<string>("Objet can`t be empty...", StatusCode.BadRequest);
         }
         catch (Exception e)
         {

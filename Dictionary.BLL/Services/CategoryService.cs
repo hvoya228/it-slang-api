@@ -19,11 +19,6 @@ public class CategoryService : ICategoryService
         _unitOfWork = unitOfWork;
         _mapper = mapper;
     }
-    
-    public Task<IBaseResponse<CategoryDto>> GetById(Guid id)
-    {
-        throw new NotImplementedException();
-    }
 
     public async Task<IBaseResponse<IEnumerable<CategoryDto>>> Get()
     {

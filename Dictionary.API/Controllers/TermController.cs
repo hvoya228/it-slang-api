@@ -15,16 +15,28 @@ public class TermController : ControllerBase
         _service = service;
     }
     
+    [HttpGet("GetByText")]
+    public async Task<ActionResult<IEnumerable<CompleteTermDto>>> GetByText(string text)
+    {
+        return Ok(await _service.GetByText(text));
+    }
+    
+    [HttpGet("GetByCategoryId")]
+    public async Task<ActionResult<IEnumerable<CompleteTermDto>>> GetByCategoryId(Guid categoryId)
+    {
+        return Ok(await _service.GetByCategoryId(categoryId));
+    }
+    
     [HttpGet("Get")]
-    public async Task<ActionResult<IEnumerable<TermDto>>> Get()
+    public async Task<ActionResult<IEnumerable<CompleteTermDto>>> Get()
     {
         return Ok(await _service.Get());
     }
     
     [HttpPost]
-    public async Task<ActionResult> Insert([FromBody] TermDto modelDto)
+    public async Task<ActionResult> Insert([FromBody] TermDto model)
     {
-        return Ok(await _service.Insert(modelDto));
+        return Ok(await _service.Insert(model));
     }
 
     [HttpDelete]

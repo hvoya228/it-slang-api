@@ -4,7 +4,7 @@ namespace Dictionary.DAL.Repositories;
 
 public class UnitOfWork : IUnitOfWork
 {
-    protected readonly DictionaryContext databaseContext;
+    private readonly DictionaryContext _databaseContext;
     public ITermRepository TermRepository { get; }
     public ICategoryRepository CategoryRepository { get; }
     public IUseFrequencyRepository UseFrequencyRepository { get; }
@@ -15,7 +15,7 @@ public class UnitOfWork : IUnitOfWork
         ICategoryRepository categoryRepository, 
         IUseFrequencyRepository useFrequencyRepository)
     {
-        this.databaseContext = databaseContext;
+        _databaseContext = databaseContext;
         TermRepository = termRepository;
         CategoryRepository = categoryRepository;
         UseFrequencyRepository = useFrequencyRepository;
@@ -23,6 +23,6 @@ public class UnitOfWork : IUnitOfWork
 
     public async Task SaveChangesAsync()
     {
-        await databaseContext.SaveChangesAsync();
+        await _databaseContext.SaveChangesAsync();
     }
 }
