@@ -23,6 +23,7 @@
     <ItemGroup>
       <Compile Remove="WeatherForecast.cs" />
       <Compile Remove="Controllers\WeatherForecastController.cs" />
+      <Compile Remove="Controllers\UseFrequencyController.cs" />
     </ItemGroup>
 
     <ItemGroup>

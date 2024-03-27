@@ -9,6 +9,8 @@
     <ItemGroup>
       <Compile Remove="Class1.cs" />
       <Compile Remove="Interfaces\IDictionaryObjectService.cs" />
+      <Compile Remove="Services\UseFrequencyService.cs" />
+      <Compile Remove="Interfaces\IUseFrequencyService.cs" />
     </ItemGroup>
 
     <ItemGroup>

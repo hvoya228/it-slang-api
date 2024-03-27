@@ -8,13 +8,13 @@ public class MappingProfile : Profile
 {
     public MappingProfile()
     {
+        CreateMap<Term, CompleteTermDto>();
+        CreateMap<CompleteTermDto, Term>();
+        
         CreateMap<Term, TermDto>();
         CreateMap<TermDto, Term>();
         
         CreateMap<Category, CategoryDto>();
         CreateMap<CategoryDto, Category>();
-        
-        CreateMap<UseFrequency, UseFrequencyDto>();
-        CreateMap<UseFrequencyDto, UseFrequency>();
     }
 }

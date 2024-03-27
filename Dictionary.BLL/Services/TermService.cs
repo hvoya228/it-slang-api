@@ -35,14 +35,18 @@ public class TermService : ITermService
                 
             foreach (var model in models)
             {
-                var dto = _mapper.Map<CompleteTermDto>(model);
-                var category = await _unitOfWork.CategoryRepository.GetByIdAsync(model.CategoryId);
-                var useFrequency = await _unitOfWork.UseFrequencyRepository.GetByIdAsync(model.UseFrequencyId);
-                dto.Category = category.Text;
-                dto.CategoryId = category.Id;
-                dto.UseFrequency = useFrequency.Frequency;
-                dto.UseFrequencyId = useFrequency.Id;
-                dtoList.Add(dto);
+                try
+                {
+                    var dto = _mapper.Map<CompleteTermDto>(model);
+                    var category = await _unitOfWork.CategoryRepository.GetByIdAsync(model.CategoryId);
+                    dto.Category = category.Text;
+                    dto.CategoryId = category.Id;
+                    dtoList.Add(dto);
+                }
+                catch
+                {
+                    dtoList.Add(new CompleteTermDto() {Id = model.Id});
+                }
             }
                 
             return CreateBaseResponse<IEnumerable<CompleteTermDto>>("Success!", StatusCode.Ok, dtoList, dtoList.Count);
@@ -68,14 +72,18 @@ public class TermService : ITermService
                 
             foreach (var model in models)
             {
-                var dto = _mapper.Map<CompleteTermDto>(model);
-                var category = await _unitOfWork.CategoryRepository.GetByIdAsync(model.CategoryId);
-                var useFrequency = await _unitOfWork.UseFrequencyRepository.GetByIdAsync(model.UseFrequencyId);
-                dto.Category = category.Text;
-                dto.CategoryId = category.Id;
-                dto.UseFrequency = useFrequency.Frequency;
-                dto.UseFrequencyId = useFrequency.Id;
-                dtoList.Add(dto);
+                try
+                {
+                    var dto = _mapper.Map<CompleteTermDto>(model);
+                    var category = await _unitOfWork.CategoryRepository.GetByIdAsync(model.CategoryId);
+                    dto.Category = category.Text;
+                    dto.CategoryId = category.Id;
+                    dtoList.Add(dto);
+                }
+                catch
+                {
+                    dtoList.Add(new CompleteTermDto() {Id = model.Id});
+                }
             }
                 
             return CreateBaseResponse<IEnumerable<CompleteTermDto>>("Success!", StatusCode.Ok, dtoList, dtoList.Count);
@@ -101,14 +109,18 @@ public class TermService : ITermService
 
             foreach (var model in models)
             {
-                var dto = _mapper.Map<CompleteTermDto>(model);
-                var category = await _unitOfWork.CategoryRepository.GetByIdAsync(model.CategoryId);
-                var useFrequency = await _unitOfWork.UseFrequencyRepository.GetByIdAsync(model.UseFrequencyId);
-                dto.Category = category.Text;
-                dto.CategoryId = category.Id;
-                dto.UseFrequency = useFrequency.Frequency;
-                dto.UseFrequencyId = useFrequency.Id;
-                dtoList.Add(dto);
+                try
+                {
+                    var dto = _mapper.Map<CompleteTermDto>(model);
+                    var category = await _unitOfWork.CategoryRepository.GetByIdAsync(model.CategoryId);
+                    dto.Category = category.Text;
+                    dto.CategoryId = category.Id;
+                    dtoList.Add(dto);
+                }
+                catch
+                {
+                    dtoList.Add(new CompleteTermDto() {Id = model.Id});
+                }
             }
 
             return CreateBaseResponse<IEnumerable<CompleteTermDto>>("Success!", StatusCode.Ok, dtoList, dtoList.Count);

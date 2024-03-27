@@ -19,13 +19,12 @@ public class TermConfiguration : IEntityTypeConfiguration<Term>
             .IsRequired();
         
         builder
+            .Property(m => m.UsingExample)
+            .IsRequired();
+        
+        builder
             .HasOne(m => m.Category)
             .WithMany(o => o.Terms)
             .HasForeignKey(m => m.CategoryId);
-        
-        builder
-            .HasOne(m => m.UseFrequency)
-            .WithMany(o => o.Terms)
-            .HasForeignKey(m => m.UseFrequencyId);
     }
 }

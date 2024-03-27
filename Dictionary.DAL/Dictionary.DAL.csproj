@@ -8,6 +8,9 @@
 
     <ItemGroup>
       <Compile Remove="Class1.cs" />
+      <Compile Remove="Configuration\UseFrequencyConfiguration.cs" />
+      <Compile Remove="Interfaces\IUseFrequencyRepository.cs" />
+      <Compile Remove="Repositories\UseFrequencyRepository.cs" />
     </ItemGroup>
 
     <ItemGroup>

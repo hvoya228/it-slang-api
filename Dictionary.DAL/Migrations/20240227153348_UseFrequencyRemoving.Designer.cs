@@ -3,6 +3,7 @@ using System;
 using Dictionary.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Dictionary.DAL.Migrations
 {
     [DbContext(typeof(DictionaryContext))]
-    partial class DictionaryContextModelSnapshot : ModelSnapshot
+    [Migration("20240227153348_UseFrequencyRemoving")]
+    partial class UseFrequencyRemoving
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.16");
@@ -46,10 +49,6 @@ namespace Dictionary.DAL.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Text")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("UsingExample")
                         .IsRequired()
                         .HasColumnType("TEXT");
 

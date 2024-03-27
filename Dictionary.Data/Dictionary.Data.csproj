@@ -11,6 +11,8 @@
       <Compile Remove="Dtos\BaseDto.cs" />
       <Compile Remove="Dtos\**" />
       <Compile Remove="DataTransferObjects\DictionaryObjectDto.cs" />
+      <Compile Remove="Models\UseFrequency.cs" />
+      <Compile Remove="DataTransferObjects\UseFrequencyDto.cs" />
     </ItemGroup>
 
     <ItemGroup>

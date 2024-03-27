@@ -10,7 +10,6 @@ public class DictionaryContext : DbContext
     
     public DbSet<Term> Terms { get; set; }
     public DbSet<Category> Categories { get; set; }
-    public DbSet<UseFrequency> UseFrequencies { get; set; }
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
